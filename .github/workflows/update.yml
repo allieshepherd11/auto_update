@@ -1,0 +1,30 @@
+name: Daily Data Update
+
+on:
+  schedule:
+    - cron: '26 10 * * *'  # Runs every day at 10:26 AM UTC
+  workflow_dispatch:       # Allows you to trigger it manually from GitHub
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Run Python update script
+        run: python scripts/update_json.py
+
+      - name: Commit and push updated data.json
+        run: |
+          git config user.name "allieshepherd11"
+          git config user.email "allieshepherd@utexas.edu"
+          git add data/data.json
+          git commit -m "Automated daily update"
+          git push

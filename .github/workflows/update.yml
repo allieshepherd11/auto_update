@@ -12,9 +12,6 @@ jobs:
       contents: write
 
     steps:
-      - name: Confirm script exists
-        run: ls -la scripts/
-
       - name: Checkout repository
         uses: actions/checkout@v3
 

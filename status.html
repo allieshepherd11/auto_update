@@ -9,7 +9,7 @@
   <ul id="test-log"></ul>
 
   <script>
-    fetch("data/data.json")
+    fetch("data/data.json?cachebust=" + new Date().getTime())
       .then(res => res.json())
       .then(data => {
         document.getElementById("title").textContent = data.title;

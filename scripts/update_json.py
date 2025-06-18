@@ -16,7 +16,7 @@ if "tests" not in data:
 
 # Add new test entry
 test_num = len(data["tests"]) + 1
-timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+timestamp = datetime.now().strftime("%Y-%m-%d %I:%M:%S %p")
 data["tests"].append(f"Test {test_num} — {timestamp}")
 
 print(f"Tests before: {len(data['tests'])}")

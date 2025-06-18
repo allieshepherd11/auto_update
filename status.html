@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GitHub Actions Test Log</title>
+</head>
+<body>
+  <h1 id="title">Loading...</h1>
+  <ul id="test-log"></ul>
+
+  <script>
+    fetch("data.json")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("title").textContent = data.title;
+        const list = document.getElementById("test-log");
+
+        data.tests.forEach(test => {
+          const li = document.createElement("li");
+          li.textContent = test;
+          list.appendChild(li);
+        });
+      })
+      .catch(err => {
+        document.body.innerHTML = "<p>Failed to load data.</p>";
+        console.error(err);
+      });
+  </script>
+</body>
+</html>

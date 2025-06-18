@@ -19,8 +19,12 @@ test_num = len(data["tests"]) + 1
 timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
 data["tests"].append(f"Test {test_num} — {timestamp}")
 
+print(f"Tests before: {len(data['tests'])}")
+
 # Save updated JSON
 with open("data/data.json", "w") as f:
     json.dump(data, f, indent=2)
 
+
 print(f"✅ Test {test_num} added at {timestamp}")
+print(f"Tests after: {len(data['tests'])}")

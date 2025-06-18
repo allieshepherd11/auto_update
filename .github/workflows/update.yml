@@ -9,13 +9,14 @@ jobs:
   update-data:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write  # ✅ Enables pushing changes
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Python
+        run: git status
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
@@ -25,8 +26,8 @@ jobs:
 
       - name: Commit and push updated data.json
         run: |
-          git config user.name "allieshepherd11"
-          git config user.email "allieshepherd@utexas.edu"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/data.json
-          git commit -m "Automated daily update"
+          git commit -m "Automated daily update" || echo "No changes to commit"
           git push

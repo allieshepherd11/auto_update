@@ -28,8 +28,8 @@ jobs:
 
       - name: Commit and push updated data.json
         run: |
-          git config user.name "allieshepherd11"
-          git config user.email "allieshepherd@utexas.edu"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/data.json
           git commit -m "Automated daily update" || echo "Nothing to commit"
           git push --force

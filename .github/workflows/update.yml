@@ -33,3 +33,10 @@ jobs:
           git add data/data.json
           git commit -m "Automated daily update" || echo "Nothing to commit"
           git push --force
+
+      - name: Touch index.html to trigger deploy
+        run: |
+          touch index.html
+          git add index.html
+          git commit -m "Trigger GitHub Pages rebuild" || echo "No change"
+          git push
